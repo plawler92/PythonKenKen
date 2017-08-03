@@ -6,6 +6,7 @@ class Board():
     
     def subtract(self, target):
         #maybe put in a message for target = 0.
+        target = int(target)
         ret = []
         for i in range(1, self.board_size + 1):
             for j in range(i + 1, self.board_size + 1):
@@ -15,6 +16,7 @@ class Board():
         
     def divide(self, target):
         #maybe put in a message for target = 0
+        target = int(target)
         ret = []
         for i in range(1, self.board_size + 1):
             for j in range(i + 1, self.board_size + 1):
@@ -23,6 +25,9 @@ class Board():
         return ret
         
     def add(self, target, num_values, allowed_repeats = 1):
+        target = int(target)
+        num_values = int(num_values)
+        allowed_repeats = int(allowed_repeats)
         ret = []
         ranges = []
         for i in range(0, num_values):
@@ -39,6 +44,9 @@ class Board():
         return self.remove_repeats(ret, allowed_repeats)
         
     def multiply(self, target, num_values, allowed_repeats = 1):
+        target = int(target)
+        num_values = int(num_values)
+        allowed_repeats = int(allowed_repeats)
         ret = []
         ranges = []
         for i in range(0, num_values):

@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from flask import request
 from board import Board
+from kakuro import Kakuro
 app = Flask(__name__)
 
 @app.route('/')
@@ -42,6 +43,15 @@ def divide():
     target = request.args.get('target')
     b = Board(board_size)
     result = b.divide(int(target))
+    return str(result)
+    
+@app.route('/kakuro/', methods=['GET'])
+def kakuro_combinations():
+    target = int(request.args.get('target'))
+    nums = int(request.args.get('nums'))
+    #disallowed = list(request.args.get('disallowed'))
+    k = Kakuro()
+    result = k.get_combinations(target, nums)
     return str(result)
     
 app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)))
